@@ -4,6 +4,7 @@ import "./App.css";
 import { apiURL } from "./api/apiURL";
 import NotFound from "./pages/NotFound/NotFound";
 import Homepage from "./pages/Homepage/Homepage";
+import About from "./pages/About/About";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} exact />
+          <Route path="/about" element={<About />} exact />
           <Route path="*" element={<NotFound />} exact />
         </Routes>
       </Router>
