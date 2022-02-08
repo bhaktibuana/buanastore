@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import "./Homepage.css";
 
 const Homepage = () => {
@@ -25,6 +26,7 @@ const Homepage = () => {
   return (
     <>
       <div className="homepage-container">
+        <Sidebar storeObj={storeObj} />
         <Navbar storeObj={storeObj} />
       </div>
 

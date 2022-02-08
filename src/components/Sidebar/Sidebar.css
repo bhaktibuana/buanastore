@@ -1,0 +1,321 @@
+.sidebar-modal {
+  background: rgba(0, 0, 0, 0.48);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9;
+}
+
+button.modal-close {
+  background: inherit;
+  color: inherit;
+  display: none;
+  outline: none;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 1.5rem;
+  right: 0.75rem;
+}
+
+.sidebar {
+  background: transparent;
+  width: 276px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  transition: all 0.2s linear 0s;
+  left: -276px;
+  z-index: 10;
+  box-shadow: rgb(0 0 0 / 4%) 0px 7px 11px;
+}
+
+.sidebar-active {
+  background: transparent;
+  width: 276px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  transition: all 0.2s linear 0s;
+  left: 0px;
+  z-index: 10;
+  box-shadow: rgb(0 0 0 / 15%) 0px 7px 11px;
+}
+
+@media screen and (max-width: 1100px) {
+  button.modal-close {
+    display: flex;
+  }
+}
+
+.sidebar-container {
+  background: #fff;
+  display: flex;
+  margin: 16px 0 16px 16px;
+  width: 100%;
+  height: calc(100vh - 32px);
+  padding: 0 20px;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 16px;
+}
+
+.sidebar-title {
+  display: flex;
+  padding-top: 25px;
+  margin-bottom: 12px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-title a {
+  display: flex;
+  margin-bottom: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  line-height: 100%;
+  font-weight: bold;
+}
+
+.sidebar-title a:hover {
+  color: inherit;
+}
+
+.sidebar-title a .sidebar-logo {
+  margin-right: 10px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img.image-sidebar-logo {
+  width: 32px;
+  height: auto;
+}
+
+.sidebar-title a p {
+  font-size: 1rem;
+  margin: 3px 0 0 0;
+}
+
+.sidebar-title-line {
+  display: flex;
+  height: 1px;
+  width: 220px;
+  background: linear-gradient(
+    90deg,
+    rgba(224, 225, 226, 0) 0%,
+    rgb(224, 225, 226) 49.52%,
+    rgba(224, 225, 226, 0) 100%
+  );
+}
+
+.sidebar-items-container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s linear 0s;
+}
+
+button.sidebar-item {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  width: 100%;
+  height: 54px;
+  position: relative;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  justify-content: flex-start;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: none;
+  line-height: 1.2px;
+  border-radius: 15px;
+  font-weight: bold;
+  transition: all 0.2s linear 0s;
+  cursor: pointer;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+button.sidebar-item-selected {
+  background: #fff;
+  border: none;
+  display: inline-flex;
+  width: 100%;
+  height: 54px;
+  position: relative;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  justify-content: flex-start;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: none;
+  line-height: 1.2px;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: default;
+  transition: all 0.2s linear 0s;
+  box-shadow: none;
+  text-decoration: none;
+  box-shadow: rgb(0 0 0 / 15%) 0px 7px 11px;
+}
+
+.sidebar-item-content {
+  display: flex;
+}
+
+.sidebar-item-icon {
+  background: #fff;
+  color: #0275d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 12px;
+  border-radius: 12px;
+  transition: all 0.2s linear 0s;
+}
+
+.sidebar-item-icon-selected {
+  background: #0275d8;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 12px;
+  border-radius: 12px;
+  transition: all 0.2s linear 0s;
+}
+
+p.sidebar-item-text {
+  color: #a0aec0;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 0.875rem;
+  transition: all 0.2s linear 0s;
+}
+
+p.sidebar-item-text-selected {
+  color: #1f2733;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 0.875rem;
+  transition: all 0.2s linear 0s;
+}
+
+button.sidebar-item:hover {
+  background: #fff;
+  box-shadow: rgb(0 0 0 / 15%) 0px 7px 11px;
+}
+
+button.sidebar-item:hover .sidebar-item-icon {
+  background: #0275d8;
+  color: #fff;
+}
+
+button.sidebar-item:hover p.sidebar-item-text {
+  color: #1f2733;
+  transition: all 0.2s linear 0s;
+}
+
+.dopdown-container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  padding-inline-start: 58px;
+  transition: all 0.2s linear 0s;
+}
+
+button.dropdown-item {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  width: 100%;
+  height: 34px;
+  position: relative;
+  padding: 6px 8px;
+  margin-bottom: 12px;
+  justify-content: flex-start;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: none;
+  line-height: 1.2px;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: default;
+  transition: all 0.2s linear 0s;
+  cursor: pointer;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+button.dropdown-item-active {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  width: 100%;
+  height: 0px;
+  position: relative;
+  padding: 0px;
+  margin-bottom: 0px;
+  justify-content: flex-start;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: none;
+  line-height: 1.2px;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: default;
+  transition: all 0.2s linear 0s;
+  cursor: pointer;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+p.dropdown-item-text {
+  color: #a0aec0;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 0.875rem;
+  transition: all 0.2s linear 0s;
+}
+
+p.dropdown-item-text-active {
+  color: #a0aec0;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 0;
+  transition: all 0.2s linear 0s;
+}
+
+button.dropdown-item:hover {
+  background: #fff;
+  box-shadow: rgb(0 0 0 / 15%) 0px 7px 11px;
+}
+
+button.dropdown-item:hover p.dropdown-item-text {
+  color: #1f2733;
+  transition: all 0.2s linear 0s;
+}
