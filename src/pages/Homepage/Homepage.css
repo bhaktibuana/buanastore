@@ -1,0 +1,19 @@
+.homepage-container {
+  background: #f7fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.homepage-footer {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 1px 6px 0 var(--color-shadow, rgba(49, 53, 59, 0.12));
+}
