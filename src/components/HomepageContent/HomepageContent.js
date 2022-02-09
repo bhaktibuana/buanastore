@@ -99,6 +99,32 @@ const HomepageContent = (props) => {
     }
   };
 
+  const fetchTotalProductsSearch = async () => {
+    try {
+      setProductSpinnerState(true);
+
+      await axios
+        .get(props.apiURL.urlProductCountCategory, {
+          params: searchStrHandler(props.storeObj.searchString),
+        })
+        .then((res) => {
+          setTotalProducts(res.data[0].total);
+
+          if (res.data[0].total % 10 === 0) {
+            setPageNumberLength(Math.floor(res.data[0].total / 10));
+            pageNumberViewHandler(Math.floor(res.data[0].total / 10));
+          } else {
+            setPageNumberLength(Math.floor(res.data[0].total / 10) + 1);
+            pageNumberViewHandler(Math.floor(res.data[0].total / 10) + 1);
+          }
+
+          setProductSpinnerState(false);
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const fetchProducts = async (pgNumber) => {
     const pageNumber = (pgNumber - 1) * 10;
 
@@ -193,6 +219,39 @@ const HomepageContent = (props) => {
     }
   };
 
+  const fetchProductsSearch = async (pgNumber) => {
+    const pageNumber = (pgNumber - 1) * 10;
+
+    try {
+      setProductSpinnerState(true);
+
+      await axios
+        .get(props.apiURL.urlProductThumbnailCategory + `${pageNumber}`, {
+          params: searchStrHandler(props.storeObj.searchString),
+        })
+        .then((res) => {
+          setProducts(
+            res.data.map((item) => {
+              return (
+                <ThumbnailCard
+                  productName={item.product_name}
+                  productCode={item.code}
+                  productDiscount={item.discount_value}
+                  productPrice={item.price}
+                  setProductDetailState={setProductDetailState}
+                  setItemSelectedCode={setItemSelectedCode}
+                />
+              );
+            })
+          );
+
+          setProductSpinnerState(false);
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const fetchProductDetail = async () => {
     try {
       setModalSpinnerState(true);
@@ -210,6 +269,17 @@ const HomepageContent = (props) => {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const searchStrHandler = (string) => {
+    const strToArr = string.split(" ");
+    const resutlObj = {};
+
+    for (let i = 0; i < strToArr.length; i++) {
+      resutlObj[strToArr[i]] = strToArr[i];
+    }
+
+    return resutlObj;
   };
 
   // pagination logic
@@ -269,7 +339,13 @@ const HomepageContent = (props) => {
   };
 
   useEffect(() => {
-    if (
+    if (props.storeObj.searchState) {
+      fetchTotalProductsSearch();
+
+      if (totalProducts > 0) {
+        fetchProductsSearch(props.storeObj.currentPageNumber);
+      }
+    } else if (
       props.storeObj.productName === "All Products" &&
       props.storeObj.filterItem === "All"
     ) {
@@ -290,6 +366,7 @@ const HomepageContent = (props) => {
     props.storeObj.currentPageNumber,
     props.storeObj.productName,
     props.storeObj.filterItem,
+    props.storeObj.searchState,
   ]);
 
   useEffect(() => {
@@ -359,6 +436,7 @@ const HomepageContent = (props) => {
                   className="filter-dropdown-item"
                   onClick={() => {
                     props.storeObj.setFilterItem("All");
+                    props.storeObj.setSearchState(false);
                     props.storeObj.setCurrentPageNumber(1);
                   }}
                 >
@@ -369,6 +447,7 @@ const HomepageContent = (props) => {
                   className="filter-dropdown-item"
                   onClick={() => {
                     props.storeObj.setFilterItem("Male");
+                    props.storeObj.setSearchState(false);
                     props.storeObj.setCurrentPageNumber(1);
                   }}
                 >
@@ -379,6 +458,7 @@ const HomepageContent = (props) => {
                   className="filter-dropdown-item"
                   onClick={() => {
                     props.storeObj.setFilterItem("Female");
+                    props.storeObj.setSearchState(false);
                     props.storeObj.setCurrentPageNumber(1);
                   }}
                 >
@@ -389,6 +469,7 @@ const HomepageContent = (props) => {
                   className="filter-dropdown-item"
                   onClick={() => {
                     props.storeObj.setFilterItem("Unisex");
+                    props.storeObj.setSearchState(false);
                     props.storeObj.setCurrentPageNumber(1);
                   }}
                 >

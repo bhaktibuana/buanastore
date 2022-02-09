@@ -11,7 +11,8 @@ const Homepage = (props) => {
   const [sidebarStatus, setSidebarStatus] = useState(false);
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [filterItem, setFilterItem] = useState("All");
-  const [getProducts, setGetProducts] = useState({});
+  const [searchState, setSearchState] = useState(false);
+  const [searchString, setSearchString] = useState("");
 
   const storeObj = {
     page: "homepage",
@@ -19,11 +20,14 @@ const Homepage = (props) => {
     setProductName,
     sidebarStatus,
     setSidebarStatus,
-    getProducts,
     currentPageNumber,
     setCurrentPageNumber,
     filterItem,
     setFilterItem,
+    setSearchState,
+    searchState,
+    setSearchString,
+    searchString,
   };
 
   return (

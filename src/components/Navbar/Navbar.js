@@ -16,6 +16,14 @@ const Navbar = (props) => {
     props.storeObj.setSidebarStatus(!props.storeObj.sidebarStatus);
   };
 
+  const keyDownHandler = (e) => {
+    if (e.key === "Enter") {
+      props.storeObj.setSearchState(true);
+      props.storeObj.setProductName("All Products");
+      props.storeObj.setFilterItem("All");
+    }
+  };
+
   return (
     <>
       {navigateTarget}
@@ -97,6 +105,7 @@ const Navbar = (props) => {
                         onClick={() => {
                           props.storeObj.setProductName("All Products");
                           props.storeObj.setFilterItem("All");
+                          props.storeObj.setSearchState(false);
                           props.storeObj.setCurrentPageNumber(1);
                         }}
                       >
@@ -107,6 +116,7 @@ const Navbar = (props) => {
                         onClick={() => {
                           props.storeObj.setProductName("T-Shirts");
                           props.storeObj.setFilterItem("All");
+                          props.storeObj.setSearchState(false);
                           props.storeObj.setCurrentPageNumber(1);
                         }}
                       >
@@ -117,6 +127,7 @@ const Navbar = (props) => {
                         onClick={() => {
                           props.storeObj.setProductName("Hoodie");
                           props.storeObj.setFilterItem("All");
+                          props.storeObj.setSearchState(false);
                           props.storeObj.setCurrentPageNumber(1);
                         }}
                       >
@@ -127,6 +138,7 @@ const Navbar = (props) => {
                         onClick={() => {
                           props.storeObj.setProductName("Shorts");
                           props.storeObj.setFilterItem("All");
+                          props.storeObj.setSearchState(false);
                           props.storeObj.setCurrentPageNumber(1);
                         }}
                       >
@@ -154,10 +166,24 @@ const Navbar = (props) => {
             </div>
 
             <div className="navbar-search">
-              <input type="text" placeholder="Search here.." />
+              <input
+                type="text"
+                placeholder="Search here.."
+                onKeyDown={keyDownHandler}
+                onChange={(e) => {
+                  props.storeObj.setSearchString(e.target.value);
+                  props.storeObj.setSearchState(false);
+                }}
+              />
 
               <div className="navbar-search-icon">
-                <button>
+                <button
+                  onClick={() => {
+                    props.storeObj.setSearchState(true);
+                    props.storeObj.setProductName("All Products");
+                    props.storeObj.setFilterItem("All");
+                  }}
+                >
                   <BsSearch />
                 </button>
               </div>

@@ -111,7 +111,7 @@ const ProductDetails = (props) => {
           <button
             id="modal-button-wishlist"
             type="button"
-            class="btn btn-danger"
+            className="btn btn-danger"
             // onClick={props.onHide}
           >
             <div className="modal-button-container">
@@ -124,7 +124,7 @@ const ProductDetails = (props) => {
           <button
             id="modal-button-add-to-cart"
             type="button"
-            class="btn btn-success"
+            className="btn btn-success"
             onClick={props.onHide}
           >
             <div className="modal-button-container">

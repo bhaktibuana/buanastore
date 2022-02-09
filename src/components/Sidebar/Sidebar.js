@@ -128,6 +128,7 @@ const Sidebar = (props) => {
                       props.storeObj.setProductName("All Products");
                       dropdownHandler();
                       props.storeObj.setFilterItem("All");
+                      props.storeObj.setSearchState(false);
                       props.storeObj.setCurrentPageNumber(1);
                     }}
                   >
@@ -150,6 +151,7 @@ const Sidebar = (props) => {
                       props.storeObj.setProductName("T-Shirts");
                       dropdownHandler();
                       props.storeObj.setFilterItem("All");
+                      props.storeObj.setSearchState(false);
                       props.storeObj.setCurrentPageNumber(1);
                     }}
                   >
@@ -172,6 +174,7 @@ const Sidebar = (props) => {
                       props.storeObj.setProductName("Hoodie");
                       dropdownHandler();
                       props.storeObj.setFilterItem("All");
+                      props.storeObj.setSearchState(false);
                       props.storeObj.setCurrentPageNumber(1);
                     }}
                   >
@@ -194,6 +197,7 @@ const Sidebar = (props) => {
                       props.storeObj.setProductName("Shorts");
                       dropdownHandler();
                       props.storeObj.setFilterItem("All");
+                      props.storeObj.setSearchState(false);
                       props.storeObj.setCurrentPageNumber(1);
                     }}
                   >
