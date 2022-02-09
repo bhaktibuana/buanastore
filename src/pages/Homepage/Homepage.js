@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-// import HomepageContent from "../../components/HomepageContent/HomepageContent";
+import HomepageContent from "../../components/HomepageContent/HomepageContent";
 import "./Homepage.css";
-import Axios from "axios";
+import { apiURL } from "../../api/apiURL";
 import Footer from "../../components/Footer/Footer";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Navbar from "../../components/Navbar/Navbar";
 
-const Homepage = () => {
+const Homepage = (props) => {
   const [productName, setProductName] = useState("All Products");
   const [sidebarStatus, setSidebarStatus] = useState(false);
-  const [getProducts, setGetProducts] = useState({});
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [filterItem, setFilterItem] = useState("All");
+  const [getProducts, setGetProducts] = useState({});
 
   const storeObj = {
     page: "homepage",
@@ -31,6 +31,7 @@ const Homepage = () => {
       <div className="homepage-container">
         <Sidebar storeObj={storeObj} />
         <Navbar storeObj={storeObj} />
+        <HomepageContent storeObj={storeObj} apiURL={apiURL} />
       </div>
 
       <div className="homepage-footer">

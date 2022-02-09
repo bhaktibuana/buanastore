@@ -147,7 +147,7 @@ const Sidebar = (props) => {
                       !dropdown ? "dropdown-item-active" : "dropdown-item"
                     }
                     onClick={() => {
-                      props.storeObj.setProductName("Shirt");
+                      props.storeObj.setProductName("T-Shirts");
                       dropdownHandler();
                       props.storeObj.setFilterItem("All");
                       props.storeObj.setCurrentPageNumber(1);
@@ -160,7 +160,7 @@ const Sidebar = (props) => {
                           : "dropdown-item-text"
                       }
                     >
-                      Shirt
+                      T-Shirts
                     </p>
                   </button>
 
