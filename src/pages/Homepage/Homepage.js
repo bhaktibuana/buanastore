@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HomepageContent from "../../components/HomepageContent/HomepageContent";
 import "./Homepage.css";
-import { apiURL } from "../../api/apiURL";
 import Footer from "../../components/Footer/Footer";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Navbar from "../../components/Navbar/Navbar";
@@ -34,8 +33,8 @@ const Homepage = (props) => {
     <>
       <div className="homepage-container">
         <Sidebar storeObj={storeObj} />
-        <Navbar storeObj={storeObj} />
-        <HomepageContent storeObj={storeObj} apiURL={apiURL} />
+        <Navbar storeObj={storeObj} apiURL={props.apiURL} />
+        <HomepageContent storeObj={storeObj} apiURL={props.apiURL} />
       </div>
 
       <div className="homepage-footer">

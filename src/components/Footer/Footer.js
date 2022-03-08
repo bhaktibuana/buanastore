@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsTwitter, BsGithub, BsLinkedin } from "react-icons/bs";
 
 const Footer = () => {
   return (
@@ -39,31 +39,21 @@ const Footer = () => {
             <div className="footer-social-icons">
               <div className="footer-social">
                 <div className="footer-social-icon">
-                  <BsFacebook size={25} />
-                </div>
-
-                <a href="/" onClick={(e) => e.preventDefault()}>
-                  Buana Store
-                </a>
-              </div>
-
-              <div className="footer-social">
-                <div className="footer-social-icon">
                   <BsInstagram size={25} />
                 </div>
 
-                <a href="/" onClick={(e) => e.preventDefault()}>
-                  buana_store
+                <a href="https://www.instagram.com/bhakti_buana/" target="_blank" rel="noopener noreferrer">
+                  bhakti_buana
                 </a>
               </div>
 
               <div className="footer-social">
                 <div className="footer-social-icon">
-                  <BsTwitter size={25} />
+                  <BsLinkedin size={25} />
                 </div>
 
-                <a href="/" onClick={(e) => e.preventDefault()}>
-                  @buana_store
+                <a href="https://www.linkedin.com/in/bhaktibuana/" target="_blank" rel="noopener noreferrer">
+                  bhaktibuana
                 </a>
               </div>
 
@@ -90,7 +80,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-copyright-container">
-          <p>© 2022, Buana Store</p>
+          <p>© 2022, Bhakti Buana</p>
         </div>
       </div>
     </>

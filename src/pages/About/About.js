@@ -27,7 +27,7 @@ const About = (props) => {
     <>
       <div className="about-container">
         <Sidebar storeObj={storeObj} />
-        <Navbar storeObj={storeObj} />
+        <Navbar storeObj={storeObj} apiURL={props.apiURL} />
         <AboutContent />
       </div>
 

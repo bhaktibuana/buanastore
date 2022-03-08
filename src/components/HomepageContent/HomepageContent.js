@@ -72,6 +72,26 @@ const HomepageContent = (props) => {
 
             setProductSpinnerState(false);
           });
+      } else if (props.storeObj.productName === "All Products" && props.storeObj.filterItem !== "All") {
+        await axios
+          .get(props.apiURL.urlProductCountCategory, {
+            params: {
+              key1: props.storeObj.filterItem,
+            },
+          })
+          .then((res) => {
+            setTotalProducts(res.data[0].total);
+
+            if (res.data[0].total % 10 === 0) {
+              setPageNumberLength(Math.floor(res.data[0].total / 10));
+              pageNumberViewHandler(Math.floor(res.data[0].total / 10));
+            } else {
+              setPageNumberLength(Math.floor(res.data[0].total / 10) + 1);
+              pageNumberViewHandler(Math.floor(res.data[0].total / 10) + 1);
+            }
+
+            setProductSpinnerState(false);
+          });
       } else {
         await axios
           .get(props.apiURL.urlProductCountCategory, {
@@ -167,6 +187,31 @@ const HomepageContent = (props) => {
           .get(props.apiURL.urlProductThumbnailCategory + `${pageNumber}`, {
             params: {
               key1: props.storeObj.productName,
+            },
+          })
+          .then((res) => {
+            setProducts(
+              res.data.map((item) => {
+                return (
+                  <ThumbnailCard
+                    productName={item.product_name}
+                    productCode={item.code}
+                    productDiscount={item.discount_value}
+                    productPrice={item.price}
+                    setProductDetailState={setProductDetailState}
+                    setItemSelectedCode={setItemSelectedCode}
+                  />
+                );
+              })
+            );
+
+            setProductSpinnerState(false);
+          });
+      } else if (props.storeObj.productName === "All Products" && props.storeObj.filterItem !== "All") {
+        await axios
+          .get(props.apiURL.urlProductThumbnailCategory + `${pageNumber}`, {
+            params: {
+              key1: props.storeObj.filterItem,
             },
           })
           .then((res) => {
@@ -584,6 +629,7 @@ const HomepageContent = (props) => {
 
       {/* modal product detail */}
       <ProductDetails
+        apiURL={props.apiURL}
         show={productDetailState}
         onHide={() => {
           setProductDetailState(false);

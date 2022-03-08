@@ -147,6 +147,7 @@ button.navbar-button-item-left#products-button:focus span {
   width: auto;
   height: auto;
   visibility: hidden;
+  margin-left: -10px;
 }
 
 .navbar-products-dropdown-container:hover {
@@ -306,6 +307,14 @@ button.navbar-button-item-left:focus .navbar-products-dropdown-container {
   color: #dc3545;
 }
 
+.navbar-item-right button.icon#user-icon-large:focus ~ .navbar-user-dropdown-container {
+  visibility: visible;
+}
+
+.navbar-item-right button.icon#user-icon-small:focus ~ .navbar-user-small-dropdown-container {
+  visibility: visible;
+}
+
 .navbar-item-right button.text {
   background: transparent;
   display: flex;
@@ -323,6 +332,113 @@ button.navbar-button-item-left:focus .navbar-products-dropdown-container {
 }
 
 .navbar-item-right button.text:hover {
+  color: #0275d8;
+}
+
+.navbar-user-dropdown-container {
+  display: flex;
+  width: auto;
+  height: auto;
+  visibility: hidden;
+  margin-left: -100px;
+}
+
+.navbar-user-dropdown-container:hover {
+  visibility: visible;
+}
+
+.navbar-user-dropdown {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  padding: 5px 10px 5px 10px;
+  border-radius: 16px;
+  position: relative;
+  top: 80px;
+  margin-top: -50px;
+  left: 20px;
+  z-index: 4;
+  float: right;
+  box-shadow: rgb(0 0 0 / 15%) 0px 0px 11px;
+}
+
+.navbar-user-dropdown button {
+  background: transparent;
+  display: flex;
+  width: auto;
+  height: 30px;
+  align-items: center;
+  color: inherit;
+  appearance: none;
+  user-select: none;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: none;
+  border-radius: 10px;
+}
+
+.navbar-user-dropdown button:hover {
+  background: #fff;
+  box-shadow: rgb(0 0 0 / 10%) 0px 7px 11px;
+  color: #0275d8;
+}
+
+.navbar-user-small-dropdown-container {
+  display: flex;
+  width: auto;
+  height: auto;
+  visibility: hidden;
+  margin-left: -100px;
+}
+
+.navbar-user-small-dropdown-container:hover {
+  visibility: visible;
+}
+
+.navbar-user-small-dropdown {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  padding: 5px 10px 5px 10px;
+  border-radius: 16px;
+  position: relative;
+  top: 70px;
+  margin-top: -50px;
+  z-index: 4;
+  float: right;
+  box-shadow: rgb(0 0 0 / 15%) 0px 0px 11px;
+}
+
+.navbar-user-small-dropdown button {
+  background: transparent;
+  display: flex;
+  width: auto;
+  height: 30px;
+  align-items: center;
+  color: inherit;
+  appearance: none;
+  user-select: none;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: none;
+  border-radius: 10px;
+}
+
+.navbar-user-small-dropdown button:hover {
+  background: #fff;
+  box-shadow: rgb(0 0 0 / 10%) 0px 7px 11px;
   color: #0275d8;
 }
 
