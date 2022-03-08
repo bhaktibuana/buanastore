@@ -3,7 +3,7 @@
 ## Description
 
 buanastore is a client side of Buana Store mini-project from Dibimbing course in the form of an e-commerce website. This project is built with [ReactJs](https://reactjs.org/) framework.
-This project can be accessed online at [https://buanastore.herokuapp.com](https://buanastore.herokuapp.com) or you can follow this documentation to use locally on your computer.
+This project can be accessed online at [https://buana-store.netlify.app](https://buana-store.netlify.app) or you can follow this documentation to use locally on your computer.
 
 ## What's in this app?
 
