@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Navigate } from "react-router-dom";
 import {
@@ -8,9 +8,14 @@ import {
   BsList,
   BsFillPersonFill,
 } from "react-icons/bs";
+import ListModal from "../ListModal/ListModal";
 
 const Navbar = (props) => {
   const [navigateTarget, setNavigateTarget] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
+  const [isLogout, setIsLogout] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
 
   const sidebarStatusHandler = () => {
     props.storeObj.setSidebarStatus(!props.storeObj.sidebarStatus);
@@ -23,6 +28,36 @@ const Navbar = (props) => {
       props.storeObj.setFilterItem("All");
     }
   };
+
+  const logoutHandler = () => {
+    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
+    setIsLogin(false);
+    setIsLogout(true);
+  };
+
+  const showModalHandler = (title) => {
+    setModalTitle(title);
+    setShowModal(true);
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      setIsLogin(true);
+    } else {
+      if (sessionStorage.getItem("token") !== null) {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isLogout) {
+      window.location.reload();
+    }
+  }, [isLogout]);
 
   return (
     <>
@@ -46,12 +81,19 @@ const Navbar = (props) => {
                 <div id="title-line" className="navbar-title-line"></div>
               </div>
 
-              <div id="small-display" className="navbar-item-right">
-                <button className="icon">
+              <div
+                id="small-display"
+                className="navbar-item-right"
+              >
+                <button className="icon" onClick={() => showModalHandler("Cart")}>
                   <BsCartCheckFill size={18} />
                 </button>
 
-                <button id="wishlist" className="icon">
+                <button
+                  id="wishlist"
+                  className="icon"
+                  onClick={() => showModalHandler("Wishlist")}
+                >
                   <BsFillHeartFill size={18} />
                 </button>
 
@@ -65,16 +107,30 @@ const Navbar = (props) => {
 
                 <div className="navbar-title-line"></div>
 
-                {/* <button className="icon">
-                  <BsFillPersonFill size={18} />
-                </button> */}
+                {isLogin ? (
+                  <>
+                    <button className="icon" id="user-icon-small">
+                      <BsFillPersonFill size={18} />
+                    </button>
 
-                <button
-                  className="text"
-                  onClick={() => setNavigateTarget(<Navigate to="/signin" />)}
-                >
-                  Sign In
-                </button>
+                    <div className="navbar-user-small-dropdown-container">
+                      <div className="navbar-user-small-dropdown">
+                        <button onClick={logoutHandler}>Log out</button>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="text"
+                      onClick={() =>
+                        setNavigateTarget(<Navigate to="/signin" />)
+                      }
+                    >
+                      Sign In
+                    </button>
+                  </>
+                )}
               </div>
             </div>
 
@@ -190,11 +246,15 @@ const Navbar = (props) => {
             </div>
 
             <div id="large-display" className="navbar-item-right">
-              <button className="icon">
+              <button className="icon" onClick={() => showModalHandler("Cart")}>
                 <BsCartCheckFill size={18} />
               </button>
 
-              <button id="wishlist" className="icon">
+              <button
+                id="wishlist"
+                className="icon"
+                onClick={() => showModalHandler("Wishlist")}
+              >
                 <BsFillHeartFill size={18} />
               </button>
 
@@ -208,20 +268,42 @@ const Navbar = (props) => {
 
               <div className="navbar-title-line"></div>
 
-              {/* <button className="icon">
-                <BsFillPersonFill size={18} />
-              </button> */}
+              {isLogin ? (
+                <>
+                  <button className="icon" id="user-icon-large">
+                    <BsFillPersonFill size={18} />
+                  </button>
 
-              <button
-                className="text"
-                onClick={() => setNavigateTarget(<Navigate to="/signin" />)}
-              >
-                Sign In
-              </button>
+                  <div className="navbar-user-dropdown-container">
+                    <div className="navbar-user-dropdown">
+                      <button onClick={logoutHandler}>Log out</button>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <button
+                    className="text"
+                    onClick={() => setNavigateTarget(<Navigate to="/signin" />)}
+                  >
+                    Sign In
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
       </nav>
+
+      <ListModal
+        show={showModal}
+        onHide={() => {
+          setShowModal(false);
+          setModalTitle("");
+        }}
+        modalTitle={modalTitle}
+        apiURL={props.apiURL}
+      />
     </>
   );
 };
