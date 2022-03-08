@@ -1,13 +1,20 @@
-const apiBaseUrl = "http://localhost:3001";
-// const apiBaseUrl = "https://buanastore-server.herokuapp.com";
+// const apiBaseUrl = "http://localhost:3001";
+const apiBaseUrl = "https://buanastore-server.herokuapp.com";
 
 export const apiURL = {
-  urlProductCountAll: `${apiBaseUrl}/product-count`,
-  urlProductCountCategory: `${apiBaseUrl}/product-count-category`,
-  urlProductThumbnail: `${apiBaseUrl}/product-thumbnail/`,
-  urlProductThumbnailCategory: `${apiBaseUrl}/product-thumbnail-category/`,
-  urlProductDetail: `${apiBaseUrl}/product-detail`,
+  urlProductCountAll: `${apiBaseUrl}/product/count`,
+  urlProductCountCategory: `${apiBaseUrl}/product/category/count`,
+  urlProductThumbnail: `${apiBaseUrl}/product/`,
+  urlProductThumbnailCategory: `${apiBaseUrl}/product/category/`,
+  urlProductDetail: `${apiBaseUrl}/product/detail`,
   urlSignup: `${apiBaseUrl}/signup`,
   urlSignin: `${apiBaseUrl}/signin`,
-  urlAuthJWT: `${apiBaseUrl}/user-authentication`,
+  urlAddWishlist: `${apiBaseUrl}/wishlist`,
+  urlCheckSelectedWishlist: `${apiBaseUrl}/wishlist/checkSelected`,
+  urlSoftDeleteWihslist: `${apiBaseUrl}/wishlist/softDelete`,
+  urlGetWishlist: `${apiBaseUrl}/wishlist`,
+  urlAddCart: `${apiBaseUrl}/cart`,
+  urlCheckSelectedCart: `${apiBaseUrl}/cart/checkSelected`,
+  urlSoftDeleteCart: `${apiBaseUrl}/cart/softDelete`,
+  urlGetCart: `${apiBaseUrl}/cart`,
 }
